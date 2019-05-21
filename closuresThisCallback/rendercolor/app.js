@@ -13,7 +13,9 @@ window.onload = function() {
 
   setInterval(function() {
     let rand = mtRand(0, items.length - 1);
-    console.log(rand);
+
+    // console.log(rand);
+    activeItem.call(items[rand]); // вызывает в контексте items[rand]
   }, 500);
 
   function mtRand(min, max) {

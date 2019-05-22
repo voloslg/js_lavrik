@@ -1,0 +1,17 @@
+.container {
+  width: 300px;
+  margin: 10px auto;
+}
+
+.slider-buttons {
+  margin: 0 auto;
+}
+
+#slider .photos img {
+  width: 100%;
+  display: none;
+}
+
+#slider .photos img:first-child {
+  display: block;
+}

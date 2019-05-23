@@ -11,7 +11,7 @@ next.addEventListener("click", () => {
 function btnClick() {
   this[i].style.display = "none";
   i++;
-  if (i >= images.length) {
+  if (i >= this.length) {
     i = 0;
   }
   this[i].style.display = "block";

@@ -19,10 +19,13 @@ function ajaxPost(params) {
   let request = new XMLHttpRequest();
   request.onreadystatechange = function() {
     console.log(request.readyState);
-    if (request.readyState === 4 && request.status === 200) {
-      console.log(request.responseText);
-      let myip = document.querySelector("#result");
-      myip.innerHTML = request.responseText;
+    if (request.readyState === 4) {
+      console.log("request.responseText", request.responseText);
+      let result = document.querySelector("#result");
+      result.innerHTML = "Form has been send";
+    } else {
+      let result = document.querySelector("#result");
+      result.innerHTML = "Error";
     }
   };
 

@@ -1,27 +1,34 @@
 window.onload = function() {
-  let btn = document.querySelector('input[type="button"]');
+  let btn = document.querySelector("#send");
+  let inp_email = document.querySelector("input[name='email']");
+  let inp_name = document.querySelector("input[name='name']");
+  let inp_phone = document.querySelector("input[name='phone']");
+
   btn.onclick = function() {
-    console.log("click");
-    ajaxGet();
+    let params = `Name: ${inp_name.value}, Email: ${inp_email.value}, Phone: ${
+      inp_phone.value
+    }`;
+    console.log(params);
+    ajaxPost(params);
   };
 };
 
 // GET request
-function ajaxGet() {
-  let urlGet = "https://jsonplaceholder.typicode.com/posts";
+function ajaxPost(params) {
+  let urlPost = "https://jsonplaceholder.typicode.com/posts";
   let request = new XMLHttpRequest();
   request.onreadystatechange = function() {
     console.log(request.readyState);
     if (request.readyState === 4 && request.status === 200) {
       console.log(request.responseText);
-      let myip = document.querySelector("#myip");
+      let myip = document.querySelector("#result");
       myip.innerHTML = request.responseText;
     }
   };
 
-  // request.open(method, url);
-  request.open("GET", urlGet);
-  request.send();
+  request.open("POST", urlPost);
+  request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  request.send(params);
 }
 
 /* 
